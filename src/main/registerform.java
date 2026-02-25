@@ -332,7 +332,7 @@ public class registerform extends javax.swing.JFrame {
     }//GEN-LAST:event_reg_btnMousePressed
 
     private void log_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_log_btnMouseClicked
-        registerform rm = new registerform();
+        loginform rm = new loginform();
         rm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_log_btnMouseClicked
