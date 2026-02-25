@@ -34,159 +34,220 @@ public class loginform extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        header = new javax.swing.JPanel();
+        logo_font = new javax.swing.JLabel();
+        LOGO = new javax.swing.JLabel();
+        body = new javax.swing.JPanel();
+        reg_btn = reg_btn = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+
+                // This makes the rounded edges smooth
+                g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+
+                // This tells the code: "Use whatever color is already set for this panel"
+                g2.setColor(getBackground());
+
+                // This only paints the rounded area
+                g2.fillRoundRect(0, 0, getWidth(), getHeight(), 5, 5);
+
+                g2.dispose();
+            }
+        };
+
+        reg_btn.setOpaque(false);
+        ;
         jLabel2 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        createaccount = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        emai = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        login = new javax.swing.JButton();
-        txtpassword = new javax.swing.JPasswordField();
+        log_btn = log_btn = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+
+                // This makes the rounded edges smooth
+                g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+
+                // This tells the code: "Use whatever color is already set for this panel"
+                g2.setColor(getBackground());
+
+                // This only paints the rounded area
+                g2.fillRoundRect(0, 0, getWidth(), getHeight(), 5, 5);
+
+                g2.dispose();
+            }
+        };
+
+        log_btn.setOpaque(false);
+        ;
         jLabel3 = new javax.swing.JLabel();
+        email = new javax.swing.JTextField() {
+            private String placeholder = "Email Address";
+
+            @Override
+            public void paint(java.awt.Graphics g) {
+                super.paint(g);
+                if (getText().isEmpty()) {
+                    java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+                    g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+                    g2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 16));
+                    g2.setColor(java.awt.Color.BLACK);
+                    java.awt.FontMetrics fm = g2.getFontMetrics();
+                    int y = (getHeight() - fm.getHeight()) / 2 + fm.getAscent();
+                    g2.drawString(placeholder, 10, y);
+                    g2.dispose();
+                }
+            }
+        };
+        password = new javax.swing.JPasswordField() {
+            private String placeholder = "Password";
+
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
+
+                if (getPassword().length == 0) {
+                    java.awt.Graphics2D g2 = (java.awt.Graphics2D) g.create();
+                    g2.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+
+                    // 1. SET FONT: Segoe UI, Bold, Size 16 (adjust size as needed)
+                    g2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.PLAIN, 16));
+
+                    // 2. SET COLOR: Solid Black
+                    g2.setColor(java.awt.Color.BLACK); 
+
+                    // 3. ALIGNMENT logic
+                    java.awt.FontMetrics fm = g2.getFontMetrics();
+                    int y = (getHeight() - fm.getHeight()) / 2 + fm.getAscent();
+
+                    g2.drawString(placeholder, 10, y);
+                    g2.dispose();
+                }
+            }
+        };
+        jLabel6 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 51)));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        header.setBackground(new java.awt.Color(26, 26, 26));
+        header.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 153, 255), null, new java.awt.Color(102, 102, 102)));
+        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel1.setText("MOTOR PARTS");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 12, -1, -1));
+        logo_font.setFont(new java.awt.Font("Segoe UI", 3, 30)); // NOI18N
+        logo_font.setForeground(new java.awt.Color(255, 255, 255));
+        logo_font.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo_font.setText("MOTOR-PARTS");
+        header.add(logo_font, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, 80));
 
-        jLabel7.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/4.png"))); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 1, -1, -1));
+        LOGO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo.png"))); // NOI18N
+        header.add(LOGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 80));
 
-        jLabel8.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/4.png"))); // NOI18N
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 1, -1, -1));
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 505, 80));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel2.setText("—");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        body.setBackground(new java.awt.Color(0, 0, 0));
+        body.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(51, 153, 255), new java.awt.Color(51, 153, 255), null, new java.awt.Color(102, 102, 102)));
+        body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        reg_btn.setBackground(new java.awt.Color(26, 26, 26));
+        reg_btn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
+        reg_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reg_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                reg_btnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                reg_btnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                reg_btnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                reg_btnMousePressed(evt);
             }
         });
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, -1, -1));
+        reg_btn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel9.setText("X");
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("REGISTER");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reg_btn.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 110, -1));
+
+        body.add(reg_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 190, 50));
+
+        log_btn.setBackground(new java.awt.Color(31, 161, 216));
+        log_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        log_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
+                log_btnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                log_btnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                log_btnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                log_btnMousePressed(evt);
             }
         });
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, -1));
+        log_btn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 70));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("LOGIN");
+        log_btn.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 70, -1));
 
-        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        body.add(log_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 190, 50));
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel5.setText("''USER LOG-IN''");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+        email.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        email.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        email.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
+        body.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 430, 50));
 
-        createaccount.setBackground(new java.awt.Color(204, 204, 204));
-        createaccount.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        createaccount.setText("Create New Account");
-        createaccount.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                createaccountMouseClicked(evt);
-            }
-        });
-        createaccount.addActionListener(new java.awt.event.ActionListener() {
+        password.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        password.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        password.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
+        password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createaccountActionPerformed(evt);
+                passwordActionPerformed(evt);
             }
         });
-        jPanel3.add(createaccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 160, 30));
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel4.setText("EMAIL:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
-
-        emai.setBackground(new java.awt.Color(204, 204, 204));
-        emai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emaiActionPerformed(evt);
-            }
-        });
-        jPanel3.add(emai, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 160, -1));
+        body.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 430, 50));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel6.setText("PASSWORD:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 1, 26)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Login Here!");
+        body.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
 
-        login.setBackground(new java.awt.Color(204, 204, 204));
-        login.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        login.setText("LOGIN");
-        login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
-            }
-        });
-        jPanel3.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, -1, -1));
+        background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/log-reg.png"))); // NOI18N
+        body.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 503, 358));
 
-        txtpassword.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel3.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 160, -1));
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 380, 350));
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/5.PNG"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 380, 350));
+        getContentPane().add(body, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 505, 358));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createaccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createaccountMouseClicked
+    private void log_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_log_btnMouseClicked
+            String Email = email.getText();
+String Password = password.getText();
 
-    }//GEN-LAST:event_createaccountMouseClicked
-
-    private void createaccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createaccountActionPerformed
-        registerform lf = new registerform();
-        lf.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_createaccountActionPerformed
-
-    private void emaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emaiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emaiActionPerformed
-
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-    String email = emai.getText();
-String password = txtpassword.getText();
-
-if (email.isEmpty() || password.isEmpty()) {
+if (Email.isEmpty() || Password.isEmpty()) {
     JOptionPane.showMessageDialog(null, "Please fill in all fields!");
     return;
 }
 
 // Hash the entered password
-String hashedPassword = PasswordUtils.hashPassword(password);
+String hashedPassword = PasswordUtils.hashPassword(Password);
 
 String sql = "SELECT id, email, address, status, type FROM users WHERE email = ? AND password = ?";
 
@@ -197,7 +258,7 @@ try (
     java.sql.Connection conn = config.connectDB();
     java.sql.PreparedStatement pst = conn.prepareStatement(sql);
 ) {
-    pst.setString(1, email);
+    pst.setString(1, Email);
     pst.setString(2, hashedPassword); // compare hashed password
 
     java.sql.ResultSet rs = pst.executeQuery();
@@ -240,18 +301,42 @@ if (userType.equalsIgnoreCase("Admin")) {
     new userdashboard().setVisible(true);
 }
 
-dispose(); // close login form
+dispose(); 
+    }//GEN-LAST:event_log_btnMouseClicked
 
+    private void reg_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reg_btnMouseClicked
+       registerform rm = new registerform();
+       rm.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_reg_btnMouseClicked
 
-    }//GEN-LAST:event_loginActionPerformed
+    private void reg_btnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reg_btnMousePressed
+    reg_btn.setBackground(new java.awt.Color(21, 125, 169));
+    }//GEN-LAST:event_reg_btnMousePressed
 
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-       System.exit(0);
-    }//GEN-LAST:event_jLabel9MouseClicked
+    private void log_btnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_log_btnMouseEntered
+        log_btn.setBackground(new java.awt.Color(66, 191, 245));
+    }//GEN-LAST:event_log_btnMouseEntered
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-       setState(ICONIFIED);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    private void log_btnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_log_btnMouseExited
+         log_btn.setBackground(new java.awt.Color(31, 161, 216));
+    }//GEN-LAST:event_log_btnMouseExited
+
+    private void log_btnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_log_btnMousePressed
+      log_btn.setBackground(new java.awt.Color(21, 125, 169));
+    }//GEN-LAST:event_log_btnMousePressed
+
+    private void reg_btnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reg_btnMouseExited
+       reg_btn.setBackground(new java.awt.Color(26, 26, 26));
+    }//GEN-LAST:event_reg_btnMouseExited
+
+    private void reg_btnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reg_btnMouseEntered
+      reg_btn.setBackground(new java.awt.Color(66, 191, 245));
+    }//GEN-LAST:event_reg_btnMouseEntered
+
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,20 +373,17 @@ dispose(); // close login form
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton createaccount;
-    private javax.swing.JTextField emai;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel LOGO;
+    private javax.swing.JLabel background;
+    private javax.swing.JPanel body;
+    private javax.swing.JTextField email;
+    private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton login;
-    private javax.swing.JPasswordField txtpassword;
+    private javax.swing.JPanel log_btn;
+    private javax.swing.JLabel logo_font;
+    private javax.swing.JPasswordField password;
+    private javax.swing.JPanel reg_btn;
     // End of variables declaration//GEN-END:variables
 }

@@ -129,9 +129,9 @@ private void loadProfile() {
                 typeMouseClicked(evt);
             }
         });
-        jPanel3.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 130, 30));
+        jPanel3.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 130, 30));
         jPanel3.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 130, 30));
-        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 130, 30));
+        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 130, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 370, 350));
 
