@@ -280,43 +280,32 @@ public class registerform extends javax.swing.JFrame {
     private void reg_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reg_btnMouseClicked
          config con = new config();
 
-        String email = em.getText();
-        String password = pass.getText();
+    String email = em.getText();
+    String password = new String(pass.getPassword());
+    String address = add.getText();
 
-        String address = add.getText();
+    if (email.isEmpty() || password.isEmpty() || address.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please fill all fields!");
+        return;
+    }
 
-        if (email.isEmpty() || password.isEmpty() || address .isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please fill all fields!");
-            return;
-        }
-        String hashedPassword = PasswordUtils.hashPassword(password);
-        String sql = "INSERT INTO users (email, address, password, status) VALUES (?,?,?,?)";
+    String hashedPassword = PasswordUtils.hashPassword(password);
 
-        if (email.equals("") || password.equals("")) {
-            JOptionPane.showMessageDialog(
-                null,
-                "Please fill in all fields!",
-                "Validation Error",
-                JOptionPane.WARNING_MESSAGE
-            );
-            return;
-        }
+    String sql = "INSERT INTO users (email, address, password, status, type) VALUES (?,?,?,?,?)";
 
-        con.addRecord(
-            sql,
-            em.getText(),
-            hashedPassword,
-            add.getText(),
-            "Pending"
-        );
+    con.addRecord(
+        sql,
+        email,
+        address,
+        hashedPassword,
+        "Active",
+        "User"
+    );
 
-        JOptionPane.showMessageDialog(null, "RECORD ADDED!");
-        loginform lm = new loginform();
-        lm.setVisible(true);
-        this.dispose();
-        em.setText("");
-        pass.setText("");
-        add.setText("");
+    JOptionPane.showMessageDialog(null, "Registration Successful!");
+
+    new loginform().setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_reg_btnMouseClicked
 
     private void reg_btnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reg_btnMouseEntered

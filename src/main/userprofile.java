@@ -124,13 +124,24 @@ private void loadProfile() {
         });
         jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 150, 30));
 
+        type.setBackground(new java.awt.Color(255, 153, 0));
+        type.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        type.setForeground(new java.awt.Color(255, 153, 0));
         type.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 typeMouseClicked(evt);
             }
         });
         jPanel3.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 130, 30));
+
+        em.setBackground(new java.awt.Color(255, 153, 0));
+        em.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        em.setForeground(new java.awt.Color(255, 153, 0));
         jPanel3.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 130, 30));
+
+        add.setBackground(new java.awt.Color(255, 153, 0));
+        add.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        add.setForeground(new java.awt.Color(255, 153, 0));
         jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 130, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 370, 350));

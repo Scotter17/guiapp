@@ -239,69 +239,65 @@ public class loginform extends javax.swing.JFrame {
 
     private void log_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_log_btnMouseClicked
             String Email = email.getText();
-String Password = password.getText();
+    String Password = new String(password.getPassword());
 
-if (Email.isEmpty() || Password.isEmpty()) {
-    JOptionPane.showMessageDialog(null, "Please fill in all fields!");
-    return;
-}
-
-// Hash the entered password
-String hashedPassword = PasswordUtils.hashPassword(Password);
-
-String sql = "SELECT id, email, address, status, type FROM users WHERE email = ? AND password = ?";
-
-String status = null;
-String userType = null;
-
-try (
-    java.sql.Connection conn = config.connectDB();
-    java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-) {
-    pst.setString(1, Email);
-    pst.setString(2, hashedPassword); // compare hashed password
-
-    java.sql.ResultSet rs = pst.executeQuery();
-
-    if (!rs.next()) {
-        JOptionPane.showMessageDialog(null, "Invalid email or password!");
+    if (Email.isEmpty() || Password.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please fill in all fields!");
         return;
     }
 
-    status = rs.getString("status");
-    userType = rs.getString("type");
+    String hashedPassword = PasswordUtils.hashPassword(Password);
 
-    session.setSession(
-        rs.getInt("id"),
-        rs.getString("email"),
-        rs.getString("address"),
-        userType
-    );
+    String sql = "SELECT id, email, address, password, status, type FROM users WHERE email = ?";
 
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(null, "Login Error: " + e.getMessage());
-    return;
-}
+    config conf = new config();
 
-// Check account status
-if (!status.equalsIgnoreCase("Active")) {
-    JOptionPane.showMessageDialog(
-        null,
-        "Your account is inactive. Please contact the administrator."
-    );
-    return;
-}
+    try (Connection conn = config.connectDB();
+         PreparedStatement pst = conn.prepareStatement(sql)) {
 
-JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+        pst.setString(1, Email);
+        ResultSet rs = pst.executeQuery();
 
-// Open dashboard based on user type
-if (userType.equalsIgnoreCase("Admin")) {
-    new AdminDashboard().setVisible(true);
-} else if (userType.equalsIgnoreCase("User")) {
-    new userdashboard().setVisible(true);
-}
+        if (!rs.next()) {
+            JOptionPane.showMessageDialog(null, "Invalid email or password!");
+            return;
+        }
 
-dispose(); 
+        String dbPassword = rs.getString("password");
+
+        if (!dbPassword.equals(hashedPassword)) {
+            JOptionPane.showMessageDialog(null, "Invalid email or password!");
+            return;
+        }
+
+        String status = rs.getString("status");
+        String userType = rs.getString("type");
+
+        if (status == null || !status.equalsIgnoreCase("Active")) {
+            JOptionPane.showMessageDialog(null, "Your account is inactive.");
+            return;
+        }
+
+        session.setSession(
+            rs.getInt("id"),
+            rs.getString("email"),
+            rs.getString("address"),
+            userType
+        );
+
+        JOptionPane.showMessageDialog(null, "LOGIN SUCCESS!");
+
+        if (userType.equalsIgnoreCase("Admin")) {
+            new AdminDashboard().setVisible(true);
+        } else {
+            new userdashboard().setVisible(true);
+        }
+
+        dispose();
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Login Error: " + e.getMessage());
+    }
     }//GEN-LAST:event_log_btnMouseClicked
 
     private void reg_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reg_btnMouseClicked
